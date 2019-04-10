@@ -1,12 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import { HashRouter } from "react-router-dom";
+import { LocaleProvider } from "antd";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import pt_BR from "antd/lib/locale-provider/pt_BR";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+import Routes from "./Routes";
+import Root from "./Root";
+import GlobalStyle from "./GlobalStyle";
+
+const App = () => (
+  <LocaleProvider locale={pt_BR}>
+    <HashRouter>
+      <GlobalStyle>
+        <Routes />
+      </GlobalStyle>
+    </HashRouter>
+  </LocaleProvider>
+);
+
+ReactDOM.render(<App />, document.getElementById("root"));
